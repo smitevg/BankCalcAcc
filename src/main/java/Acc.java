@@ -49,28 +49,6 @@ public class Acc {
 
 
 
-    public static void main(String[] arg){
-        Acc a = initAcc1();
-
-
-    }
-
-    //testData
-    private static Acc initAcc1(){
-
-        DayAcc day1 = new DayAcc("2016.01.12", 200000L, null, 12L);
-        DayAcc day2 = new DayAcc("2016.02.20", null, 10000L, null);
-        DayAcc day3 = new DayAcc("2016.04.02", null, 10000L, null);
-        TreeSet<DayAcc> ds = new TreeSet<DayAcc>();
-        ds.add(day3);
-        ds.add(day2);
-        ds.add(day1);
-        System.out.println( ds.first().day );
-
-        Acc a = new Acc("Тест", 1, ds, true, 15);
-        return a;
-    }
-
 
 
 
