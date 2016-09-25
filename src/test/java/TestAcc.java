@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.text.ParseException;
 import java.util.TreeSet;
 
 /**
@@ -26,6 +27,12 @@ public class TestAcc extends Assert {
     public void test1(){
         Acc a = initAcc1();
 
+
+        try {
+            assertEquals(a.getStartDate(), Acc.sdf.parse("2016.01.12"));
+        } catch (ParseException e) {
+            Assert.fail("Date start Account is bad");
+        }
         assertEquals(1L,1L);
     }
 }

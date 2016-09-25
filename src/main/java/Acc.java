@@ -29,6 +29,10 @@ public class Acc {
     //День месяца капитализации
     private int dayCap = -1;
 
+    public Date getStartDate() {
+        return startDate;
+    }
+
     private Date startDate;
 
 
