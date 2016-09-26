@@ -1,5 +1,9 @@
+package ru.ibetter.test;
+
 import org.junit.Assert;
 import org.junit.Test;
+import ru.ibetter.Acc;
+import ru.ibetter.DayAcc;
 
 import java.text.ParseException;
 import java.util.TreeSet;
@@ -33,6 +37,9 @@ public class TestAcc extends Assert {
         } catch (ParseException e) {
             Assert.fail("Date start Account is bad");
         }
+        
         assertEquals(1L,1L);
     }
+
+
 }

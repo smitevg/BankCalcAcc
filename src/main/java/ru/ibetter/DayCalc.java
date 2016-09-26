@@ -1,3 +1,5 @@
+package ru.ibetter;
+
 /**
  * Created by smit on 25.09.2016.
  */

@@ -1,7 +1,4 @@
-
-
-import java.math.BigDecimal;
-import java.util.Currency;
+package ru.ibetter;
 
 /**
  * Created by smit on 24.09.2016.

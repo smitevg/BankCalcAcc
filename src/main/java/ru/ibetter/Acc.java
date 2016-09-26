@@ -1,16 +1,9 @@
+package ru.ibetter;
 
-import java.math.BigDecimal;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 
-/**
- * Сохраниение
- */
 
 
 public class Acc {
@@ -20,15 +13,13 @@ public class Acc {
     private String name;
     private int numberAcc;
 
-    //снятие.внесение, Изменение процента, Остаток из банка
     private TreeSet<DayAcc> daily = new TreeSet<DayAcc>();
 
-    //капитализация
     private boolean isCap = false;
 
-    //День месяца капитализации
     private int dayCap = -1;
 
+    //
     public Date getStartDate() {
         return startDate;
     }
@@ -50,6 +41,20 @@ public class Acc {
     }
 
 
+    public TreeSet<DayAcc> calc(int daysCount) {
+
+        TreeSet<DayAcc> ts = new TreeSet<DayAcc>();
+        for (int i=1; i < daysCount; i++) {
+
+
+            Date d = (Date)this.startDate.clone();
+
+
+            String curDat = sdf.format(d);
+            DayAcc da = new DayAcc(curDat, null, 0L, null);
+        }
+        return ts;
+    }
 
 
 
