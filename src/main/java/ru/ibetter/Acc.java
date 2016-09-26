@@ -42,17 +42,34 @@ public class Acc {
 
 
     public TreeSet<DayCalc> calc(int daysCount) {
+        System.out.println("Start calc");
+        Calendar c = Calendar.getInstance();
+        c.setTime(this.startDate);
+
+        Iterator<DayAcc> iDA = this.daily.iterator();
+        DayAcc da = iDA.next();
 
         TreeSet<DayCalc> ts = new TreeSet<DayCalc>();
         for (int i=1; i < daysCount; i++) {
 
 
-            Date d = (Date)this.startDate.clone();
+            String dateText = sdf.format(c.getTime());
 
 
-            String curDat = sdf.format(d);
-            DayCalc da = new DayCalc(i);
-            ts.add(da);
+
+
+
+            if (da != null && da.getDay().equals(dateText)) {
+                System.out.println(dateText);
+                if (iDA.hasNext()){
+                    da = iDA.next();
+                }
+            }
+
+
+            DayCalc dc = new DayCalc(i);
+            ts.add(dc);
+            c.add(Calendar.DAY_OF_MONTH, 1);
         }
         return ts;
     }
