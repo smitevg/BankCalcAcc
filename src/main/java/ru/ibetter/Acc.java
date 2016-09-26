@@ -52,6 +52,7 @@ public class Acc {
 
             String curDat = sdf.format(d);
             DayAcc da = new DayAcc(curDat, null, 0L, null);
+            ts.add(da);
         }
         return ts;
     }
