@@ -41,9 +41,9 @@ public class Acc {
     }
 
 
-    public TreeSet<DayAcc> calc(int daysCount) {
+    public TreeSet<DayCalc> calc(int daysCount) {
 
-        TreeSet<DayAcc> ts = new TreeSet<DayAcc>();
+        TreeSet<DayCalc> ts = new TreeSet<DayCalc>();
         for (int i=1; i < daysCount; i++) {
 
 
@@ -51,7 +51,7 @@ public class Acc {
 
 
             String curDat = sdf.format(d);
-            DayAcc da = new DayAcc(curDat, null, 0L, null);
+            DayCalc da = new DayCalc(i);
             ts.add(da);
         }
         return ts;

@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.ibetter.Acc;
 import ru.ibetter.DayAcc;
+import ru.ibetter.DayCalc;
 
 import java.text.ParseException;
 import java.util.TreeSet;
@@ -39,6 +40,9 @@ public class TestAcc extends Assert {
         }
 
         assertEquals(1L,1L);
+
+        TreeSet<DayCalc> dc = a.calc(200);
+
     }
 
 
