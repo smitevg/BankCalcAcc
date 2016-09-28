@@ -38,6 +38,19 @@ public class Acc {
         this.daily = daily;
         this.isCap = isCap;
         this.dayCap = dayCap;
+
+		//full %
+		Long prValue = null;
+		Iterator<DayAcc> iDA = this.daily.iterator();
+		/*while (iDA.hasNext()){
+            DayAcc d = iDA.next();
+			if (d.prValue == null) {
+				d.prValue = prValue;	
+			} else {
+				prValue = d.prValue;	
+			}
+		
+        }*/
     }
 
 
@@ -46,27 +59,36 @@ public class Acc {
         Calendar c = Calendar.getInstance();
         c.setTime(this.startDate);
 
+		DayAcc daCur =  null;
+		DayAcc daNext =  null;
+		
         Iterator<DayAcc> iDA = this.daily.iterator();
-        DayAcc da = iDA.next();
-
+        if (iDA.hasNext()){
+            daNext = iDA.next();
+        }
+		
+		
+		Long curRrValue = 0L;
+		
         TreeSet<DayCalc> ts = new TreeSet<DayCalc>();
-        for (int i=1; i < daysCount; i++) {
-
+        for (int i=0; i < daysCount; i++) {
 
             String dateText = sdf.format(c.getTime());
 
-
-
-
-
-            if (da != null && da.getDay().equals(dateText)) {
+            if (daNext != null && daNext.getDay().equals(dateText)) {
+				
+				daCur = daNext;
+				
                 System.out.println(dateText);
                 if (iDA.hasNext()){
-                    da = iDA.next();
-                }
+                    daNext = iDA.next();
+                } else {
+					daNext = null;
+				}
             }
 
-
+			
+			
             DayCalc dc = new DayCalc(i);
             ts.add(dc);
             c.add(Calendar.DAY_OF_MONTH, 1);

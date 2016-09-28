@@ -9,21 +9,34 @@ import ru.ibetter.DayCalc;
 import java.text.ParseException;
 import java.util.TreeSet;
 
+import java.util.*;
+
 /**
  * Created by smit on 25.09.2016.
  */
 public class TestAcc extends Assert {
 
     private Acc initAcc1(){
-
+		System.out.println("initAcc1");
         DayAcc day1 = new DayAcc("2016.01.12", 200000L, null, 12L);
         DayAcc day2 = new DayAcc("2016.02.20", null, 10000L, null);
         DayAcc day3 = new DayAcc("2016.04.02", null, 10000L, null);
+		DayAcc day4 = new DayAcc("2016.05.12", null, -10000L, null);
         TreeSet<DayAcc> ds = new TreeSet<DayAcc>();
         ds.add(day1);
         ds.add(day2);
         ds.add(day3);
         Acc a = new Acc("Тест", 1, ds, true, 15);
+		
+		Iterator<DayAcc> iDA = ds.iterator();
+		DayAcc _d = null;
+        while (iDA.hasNext()){
+            _d = iDA.next();
+			if (_d.prValue == null) {
+				System.out.println("!!!!NULL!!");
+			}
+        }
+		
         return a;
     }
 
@@ -32,6 +45,7 @@ public class TestAcc extends Assert {
     public void test1(){
         Acc a = initAcc1();
 
+		
 
         try {
             assertEquals(a.getStartDate(), Acc.sdf.parse("2016.01.12"));
