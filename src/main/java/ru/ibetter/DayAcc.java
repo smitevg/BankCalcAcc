@@ -11,7 +11,10 @@ public class DayAcc implements Comparable<DayAcc> {
     private static String KEY_PR_VALUE = "pv";
 
     public String day;
-
+    public Long bankValue;
+    public Long moveValue;
+    public Long prValue;
+	
     public String getDay() {
         return day;
     }
@@ -27,11 +30,6 @@ public class DayAcc implements Comparable<DayAcc> {
     public Long getPrValue() {
         return prValue;
     }
-
-    public Long bankValue;
-    public Long moveValue;
-    public Long prValue;
-
 
 
 

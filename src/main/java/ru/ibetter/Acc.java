@@ -42,7 +42,7 @@ public class Acc {
 		//full %
 		Long prValue = null;
 		Iterator<DayAcc> iDA = this.daily.iterator();
-		/*while (iDA.hasNext()){
+		while (iDA.hasNext()){
             DayAcc d = iDA.next();
 			if (d.prValue == null) {
 				d.prValue = prValue;	
@@ -50,7 +50,7 @@ public class Acc {
 				prValue = d.prValue;	
 			}
 		
-        }*/
+        }
     }
 
 
@@ -68,28 +68,44 @@ public class Acc {
         }
 		
 		
-		Long curRrValue = 0L;
+		long curRrValue = 0; // Current procent
+		int cDays = 0;
+		long depo = 0;
+		long allInterest = 0;
 		
         TreeSet<DayCalc> ts = new TreeSet<DayCalc>();
         for (int i=0; i < daysCount; i++) {
 
             String dateText = sdf.format(c.getTime());
 
+			int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+			
             if (daNext != null && daNext.getDay().equals(dateText)) {
 				
 				daCur = daNext;
 				
                 System.out.println(dateText);
                 if (iDA.hasNext()){
-                    daNext = iDA.next();
+                    daNext = iDA.next();					
                 } else {
 					daNext = null;
 				}
+				if (daCur != null) {
+					if (daCur.bankValue != null){
+						depo = daCur.bankValue;
+					}
+					curRrValue = daCur.prValue;
+				}
+				cDays = i;
             }
-
+				
+			long interest = (depo * curRrValue * (i - cDays) / 365) / 10000;
+			allInterest = allInterest + interest;				
+			System.out.println(allInterest + "		|interest:" + interest );
 			
 			
             DayCalc dc = new DayCalc(i);
+			dc.interest = interest;
             ts.add(dc);
             c.add(Calendar.DAY_OF_MONTH, 1);
         }
@@ -99,7 +115,7 @@ public class Acc {
 
 
 
-
+	
 
 
 }

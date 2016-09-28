@@ -18,14 +18,15 @@ public class TestAcc extends Assert {
 
     private Acc initAcc1(){
 		System.out.println("initAcc1");
-        DayAcc day1 = new DayAcc("2016.01.12", 200000L, null, 12L);
+        DayAcc day1 = new DayAcc("2016.01.12", 200000L, null, 1200L); //  2000р 12%
         DayAcc day2 = new DayAcc("2016.02.20", null, 10000L, null);
-        DayAcc day3 = new DayAcc("2016.04.02", null, 10000L, null);
-		DayAcc day4 = new DayAcc("2016.05.12", null, -10000L, null);
+        DayAcc day3 = new DayAcc("2016.04.02", null, 10000L, 1100L);
+		DayAcc day4 = new DayAcc("2016.05.12", null, -10000L, 900L);
         TreeSet<DayAcc> ds = new TreeSet<DayAcc>();
         ds.add(day1);
         ds.add(day2);
         ds.add(day3);
+		ds.add(day4);
         Acc a = new Acc("Тест", 1, ds, true, 15);
 		
 		Iterator<DayAcc> iDA = ds.iterator();
@@ -34,6 +35,8 @@ public class TestAcc extends Assert {
             _d = iDA.next();
 			if (_d.prValue == null) {
 				System.out.println("!!!!NULL!!");
+			} else {
+				System.out.println(_d.prValue);
 			}
         }
 		
