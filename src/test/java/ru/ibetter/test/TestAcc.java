@@ -43,6 +43,18 @@ public class TestAcc extends Assert {
         return a;
     }
 
+	
+	private Acc initAcc365(){
+		System.out.println("initAcc1");
+        DayAcc day1 = new DayAcc("2016.01.01", 200000L, null, 1200L); //  2000р 12%        
+		
+        TreeSet<DayAcc> ds = new TreeSet<DayAcc>();
+        ds.add(day1);
+        
+        Acc a = new Acc("Тест", 1, ds, true, 15);
+		
+        return a;
+    }
 
     @Test
     public void test1(){
@@ -62,5 +74,17 @@ public class TestAcc extends Assert {
 
     }
 
+	@Test
+	public void test2(){
+        Acc a = initAcc365();
+
+		
+
+        TreeSet<DayCalc> dc = a.calc(200);
+		long l = dc.last().interest;
+
+        assertEquals(l,13084);
+
+    }
 
 }

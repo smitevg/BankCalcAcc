@@ -111,6 +111,15 @@ public class Acc {
         }
         return ts;
     }
+	
+	public static long sumInterest(TreeSet<DayCalc> ts) {
+		long res = 0L;
+		Iterator<DayCalc> da = ts.iterator();
+        while (da.hasNext()){            
+			res = res +	da.next().interest;
+        }
+		return res;
+	}
 
 
 
