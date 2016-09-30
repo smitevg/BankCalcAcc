@@ -55,10 +55,45 @@ public class TestAcc extends Assert {
 		
         return a;
     }
+	
+	
+	private Acc initAcc2(){
+		System.out.println("initAcc1");
+		TreeSet<DayAcc> ds = new TreeSet<DayAcc>();
+        ds.add( new DayAcc("2016.01.13", 6300000L, null, 1200L) ); //  63 000р 12%        
+		ds.add( new DayAcc("2016.01.27", null, 3700000L, null) ); 
+		ds.add( new DayAcc("2016.01.30", null, 2500000L, null) ); 
+		ds.add( new DayAcc("2016.02.03", null, 2100000L, null) ); 
+		ds.add( new DayAcc("2016.02.04", null, 400000L, null) ); 
+		ds.add( new DayAcc("2016.02.11", null, 5000000L, null) ); 
+		ds.add( new DayAcc("2016.02.19", null, 5000000L, null) ); 
+		ds.add( new DayAcc("2016.02.21", null, 5000000L, null) ); 
+		ds.add( new DayAcc("2016.02.26", null, 2000000L, null) ); 
+		ds.add( new DayAcc("2016.02.28", null, 3000000L, null) ); 
+
+		
+		ds.add( new DayAcc("2016.02.28", null, 3000000L, null) ); 
+		ds.add( new DayAcc("2016.03.02", null, 2500000L, null) ); 
+		ds.add( new DayAcc("2016.03.03", null, 5000000L, null) ); 
+		ds.add( new DayAcc("2016.03.03", null, 5000000L, null) ); 
+		ds.add( new DayAcc("2016.03.05", null, 4500000L, null) ); 
+		ds.add( new DayAcc("2016.03.15", null, 300000L, null) ); 
+		ds.add( new DayAcc("2016.03.15", null, 3000L, null) ); 
+		ds.add( new DayAcc("2016.03.25", null, 500000L, null) ); 
+		
+		
+        ds.add(day1);
+        
+        Acc a = new Acc("Тест", 1, ds, true, 15);
+		
+        return a;
+    }
+	
+	
 
     @Test
     public void test1(){
-        Acc a = initAcc1();
+        Acc a = initAcc2();
 
 		
 
