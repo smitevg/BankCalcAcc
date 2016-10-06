@@ -71,22 +71,24 @@ public class Acc {
 		long curRrValue = 0; // Current procent
 		int cDays = 0;
 		long depo = 0;
+        long newDepo = 0;
 		long allInterest = 0;
-		
+        long interest = 0;
         TreeSet<DayCalc> ts = new TreeSet<DayCalc>();
         for (int i=0; i < daysCount; i++) {
 
             String dateText = sdf.format(c.getTime());
 
 			int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
-			
+
+
             if (daNext != null && daNext.getDay().equals(dateText)) {
-				
+
 				daCur = daNext;
-				
+
                 System.out.println(dateText);
                 if (iDA.hasNext()){
-                    daNext = iDA.next();					
+                    daNext = iDA.next();
                 } else {
 					daNext = null;
 				}
@@ -94,15 +96,22 @@ public class Acc {
 					if (daCur.bankValue != null){
 						depo = daCur.bankValue;
 					}
-					curRrValue = daCur.prValue;
+                    if (daCur.getPrValue() != null) {
+                        curRrValue = daCur.prValue;
+                    }
+                    if (daCur.getMoveValue() != null) {
+                        depo = depo + daCur.getMoveValue();
+                        System.out.println( "add: " + daCur.getMoveValue()/100 + " ; depo: "+ depo/100);
+                    }
 				}
-				cDays = i;
+				cDays = i-1;
+                allInterest = allInterest + interest;
             }
-				
-			long interest = (depo * curRrValue * (i - cDays) / 365) / 10000;
-			allInterest = allInterest + interest;				
-			System.out.println(allInterest + "		|interest:" + interest );
-			
+            interest = (depo * curRrValue * (i - cDays) / 366) / 100 /100;
+
+
+			System.out.println((i - cDays) + " | "+ dateText + " | depо: " + depo/100 + ": curRrValue" +curRrValue+ " | " + (allInterest+interest)/100 + "		|interest:" + interest/100 + "|a:"+allInterest/100 );
+
 			
             DayCalc dc = new DayCalc(i);
 			dc.interest = interest;
@@ -120,7 +129,13 @@ public class Acc {
         }
 		return res;
 	}
-
+   /*
+    63000 13.01
+    37000 27.01
+    25000 30.01
+    21000
+   *
+   * */
 
 
 

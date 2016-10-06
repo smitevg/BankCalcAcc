@@ -36,14 +36,18 @@ public class DayAcc implements Comparable<DayAcc> {
 
     public DayAcc(String day, Long bankValue, Long moveValue, Long prValue){
         this.day = day;
-
-
         this.bankValue = bankValue;
         this.moveValue = moveValue;
         this.prValue = prValue;
     }
 
 
+    public DayAcc(String day, Integer bankValue, Integer moveValue, Integer prValue){
+        this.day = day;
+        this.bankValue = (bankValue != null) ? new Long(bankValue * 100) : null;
+        this.moveValue = (moveValue != null) ? new Long(moveValue * 100) : null;
+        this.prValue = (prValue != null) ? new Long(prValue * 100) : null;
+    }
 
     @Override
     public int compareTo(DayAcc o) {
